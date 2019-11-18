@@ -20,6 +20,11 @@ enable :sessions
     erb :play
   end
 
+  get '/player2points' do
+    session[:player2points] = 1
+    erb :player2points
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 
