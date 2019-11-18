@@ -17,12 +17,8 @@ enable :sessions
   end
 
   get '/play' do
-    erb :play
-  end
-
-  get '/player2points' do
     session[:player2points] = 1
-    erb :player2points
+    erb :play
   end
 
   # start the server if ruby file executed directly
