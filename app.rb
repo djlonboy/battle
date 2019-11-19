@@ -12,7 +12,6 @@ enable :sessions
   post '/names' do
     session[:player1] = params[:player1]
     session[:player2] = params[:player2]
-
     redirect '/play'
   end
 
@@ -21,6 +20,10 @@ enable :sessions
     erb :play
   end
 
+  post '/player2attack' do
+    session[:player2attack] = true
+    redirect '/play'
+  end
   # start the server if ruby file executed directly
   run! if app_file == $0
 
