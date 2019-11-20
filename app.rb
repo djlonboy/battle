@@ -21,7 +21,7 @@ enable :sessions
   end
 
   post '/player2attack' do
-    session[:player2attack] = true
+    $output = $player2.attack
     redirect '/play'
   end
   # start the server if ruby file executed directly
