@@ -11,9 +11,10 @@ enable :sessions
   end
 
   post '/names' do
-    @player1 = Player.new(params[:player1])
-    @player2 = Player.new(params[:player2])
-    session[:game] = Game.new(@player1, @player2)
+    session[:game] = Game.new(
+      Player.new(params[:player1]),
+      Player.new(params[:player2])
+    )
     redirect '/play'
   end
 
