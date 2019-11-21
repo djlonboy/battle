@@ -24,6 +24,7 @@ enable :sessions
 
   post '/player2attack' do
     session[:output] = session[:game].attack
+    session[:output] = session[:game].game_status if session[:game].game_status != nil
     redirect '/play'
   end
   # start the server if ruby file executed directly
