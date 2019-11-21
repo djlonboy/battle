@@ -1,12 +1,12 @@
 <div>
-  Names: <%= $player1.name %> & <%= $player2.name %>
+  Names: <%= session[:game].player1.name %> & <%= session[:game].player2.name %>
   <br>
-  <%= session[:player2] %> hit points: <%= session[:player2points] %>
+  <%= session[:game].player2.name %> hit points: <%= session[:game].player2.hit_points %>
 </div>
 <p></p>
 <form action="/player2attack" method="post">
   <input type="submit" value="Attack">
 </form>
 <p></p>
-Current status:
-<%= $output %>
+Current status:<br>
+<%= session[:output] %>

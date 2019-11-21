@@ -7,8 +7,8 @@ class Player
     @hit_points  = STARTING_POINTS
   end
 
-  def attack
-    @hit_points -= 10
-    "#{@name} was attacked!<br>Current hit points: #{@hit_points}"
+  def reduce_points(points)
+    @hit_points -= points.to_i
   end
+
 end

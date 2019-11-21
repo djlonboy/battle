@@ -10,7 +10,7 @@ end
 feature 'players can check eachothers points:' do
   scenario 'Player 1 can check player 2s hit points' do
     sign_in_and_play
-      expect(page).to have_content "John hit points: 1"
+      expect(page).to have_content "John hit points: 50"
   end
 end
 
