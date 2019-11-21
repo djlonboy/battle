@@ -1,5 +1,5 @@
 require './lib/game'
-require './lib/player'
+require './app.rb'
 
 describe Game do
 
@@ -13,6 +13,10 @@ describe Game do
     allow(@player2).to receive(:name).and_return "player2"
     allow(@player2).to receive(:hit_points).and_return 50
     allow(@player2).to receive(:reduce_points).with(10)
+
+    @player3 = double("Player Class")
+    allow(@player3).to receive(:name).and_return "player3"
+    allow(@player3).to receive(:hit_points).and_return 0
   end
 
   it "accepts two players when created" do
@@ -24,10 +28,20 @@ describe Game do
     expect(game.attack).to include("player2 was attacked!")
   end
 
-  it ": Turn method switches between players" do
+  it ": Switch_turn method switches between players" do
     game = Game.new(@player1, @player2)
     expect(game.switch_turn).to eq "player2"
     expect(game.switch_turn).to eq "player1"
+  end
+
+  it ": Game_status returns loser and game over when player1 reaches 0 points" do
+      game = Game.new(@player3, @player2)
+      expect(game.game_status).to eq("Game_over!<br>player3 loses!")
+  end
+
+  it ": Game_status returns loser and game over when player2 reaches 0 points" do
+      game = Game.new(@player1, @player3)
+      expect(game.game_status).to eq("Game_over!<br>player3 loses!")
   end
 
 end

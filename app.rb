@@ -12,8 +12,8 @@ enable :sessions
 
   post '/names' do
     session[:game] = Game.new(
-      Player.new(params[:player1]),
-      Player.new(params[:player2])
+      Player.new(params[:player1], Game::STARTING_POINTS),
+      Player.new(params[:player2], Game::STARTING_POINTS)
     )
     redirect '/play'
   end
