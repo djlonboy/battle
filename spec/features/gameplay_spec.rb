@@ -12,6 +12,11 @@ feature 'players can check eachothers points:' do
     sign_in_and_play
     expect(page).to have_content "John hit points: 50"
   end
+
+  scenario 'Player 2 can check player 1s hit points' do
+    sign_in_and_play
+    expect(page).to have_content "Rob hit points: 50"
+  end
 end
 
 feature 'players can attack one another:' do
@@ -20,9 +25,17 @@ feature 'players can attack one another:' do
     click_button 'Attack'
     expect(page).to have_content "John was attacked!"
   end
+
+  scenario 'The correct player attacks the correct opponent' do
+    sign_in_and_play
+    expect(page).to have_content "Rob's turn"
+    click_button 'Attack'
+    click_button 'Attack'
+    expect(page).to have_content "Rob was attacked!"
+  end
 end
 
-feature 'turns switch between players' do
+feature 'turns switch between players:' do
   scenario 'Turn passes to player 2 after player 1' do
     sign_in_and_play
     click_button 'Attack'

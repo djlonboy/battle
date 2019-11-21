@@ -19,12 +19,11 @@ enable :sessions
   end
 
   get '/play' do
-    session[:player2points] = 1
     erb :play
   end
 
   post '/player2attack' do
-    session[:output] = session[:game].attack(session[:game].player2)
+    session[:output] = session[:game].attack
     redirect '/play'
   end
   # start the server if ruby file executed directly

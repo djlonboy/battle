@@ -1,12 +1,16 @@
-<div>
+<div style="margin-bottom: 20px">
   Names: <%= session[:game].player1.name %> & <%= session[:game].player2.name %>
+  <br><br>
+  <%= session[:game].player1.name %> hit points: <%= session[:game].player1.hit_points %>
   <br>
   <%= session[:game].player2.name %> hit points: <%= session[:game].player2.hit_points %>
 </div>
-<p></p>
+<div style="margin-bottom: 20px">
+  <span style="text-decoration: underline"><%= session[:game].round[:attacker].name %>'s turn</span>
+</div>
+<div style="margin-bottom: 50px">
 <form action="/player2attack" method="post">
   <input type="submit" value="Attack">
 </form>
-<p></p>
-Current status:<br>
+</div>
 <%= session[:output] %>

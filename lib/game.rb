@@ -1,21 +1,31 @@
 class Game
-  attr_reader :player1, :player2
+  attr_reader :player1, :player2, :round
   ATTACK_POINTS = 10
 
   def initialize(player1, player2)
     @player1 = player1
     @player2 = player2
-    @turn = "Player 1"
+    @round = { attacker: player1, opponent: player2 }
   end
 
-  def attack(player)
-    player.reduce_points(ATTACK_POINTS)
-    "#{player.name} was attacked!<br>Current hit points: #{player.hit_points}"
+  def attack
+    @round[:opponent].reduce_points(ATTACK_POINTS)
+    message = "#{@round[:opponent].name} was attacked!"
+    switch_turn
+    message
   end
 
-  def turn
-    return @turn = "Player 2" if @turn == "Player 1"
-    return @turn = "Player 1" if @turn == "Player 2"
+  def switch_turn
+    if @round[:attacker] == player1
+      @round[:attacker] = player2
+      @round[:opponent] = player1
+    elsif @round[:attacker] == player2
+      @round[:attacker] = player1
+      @round[:opponent] = player2
+    else
+      raise "Player error: Unrecognised player"
+    end
+    @round[:attacker].name
   end
 
 end
