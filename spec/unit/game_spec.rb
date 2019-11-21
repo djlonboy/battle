@@ -35,13 +35,18 @@ describe Game do
   end
 
   it ": Game_status returns loser and game over when player1 reaches 0 points" do
-      game = Game.new(@player3, @player2)
-      expect(game.game_status).to eq("Game_over!<br>player3 loses!")
+    game = Game.new(@player3, @player2)
+    expect(game.game_status).to eq("Game_over!<br>player3 loses!")
   end
 
   it ": Game_status returns loser and game over when player2 reaches 0 points" do
-      game = Game.new(@player1, @player3)
-      expect(game.game_status).to eq("Game_over!<br>player3 loses!")
+    game = Game.new(@player1, @player3)
+    expect(game.game_status).to eq("Game_over!<br>player3 loses!")
+  end
+
+  it "; Game_status returns nil if neither player is on 0 points" do
+    game = Game.new(@player1, @player2)
+    expect(game.game_status).to eq(nil)
   end
 
 end
