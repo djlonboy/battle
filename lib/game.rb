@@ -14,9 +14,8 @@ class Game
   end
 
   def turn
-    @turn = 2 if @turn == 1
-    @turn = 1 if @turn == 2
-    @turn
+    return @turn = "Player 2" if @turn == "Player 1"
+    return @turn = "Player 1" if @turn == "Player 2"
   end
 
 end
